@@ -55,7 +55,7 @@
                     <input class="inp-style inp-width" type="number" name="" id="firstclass-count" value="0">
                 </div>
                 <div class="plus-minus-btn">
-                    <p><span onclick="ticketExchange('firstclass',true)" id="">+</span> <span onclick="ticketExchange('firstclass',false)">-</span></p>
+                    <p><span class="btn btn-success" onclick="ticketExchange('firstclass',true)" id="">+</span> <span class="btn btn-danger" onclick="ticketExchange('firstclass',false)">-</span></p>
                 </div>
             </div>
             
@@ -65,7 +65,7 @@
                     <input class="inp-style inp-width" type="number" name="" id="economyclass-count" value="0">
                 </div>
                 <div class="plus-minus-btn">
-                    <p> <span id="" onclick="ticketExchange('economyclass',true)">+</span> <span onclick="ticketExchange('economyclass',false)">-</span> </p>
+                    <p> <span class="btn btn-success" id="" onclick="ticketExchange('economyclass',true)">+</span> <span class="btn btn-danger" onclick="ticketExchange('economyclass',false)">-</span> </p>
                 </div>
             </div>
             <div class="calculations">
@@ -108,9 +108,11 @@
 
 
     <script>
+//    number of tickets
+
      function ticketExchange(ticket,isIncrease){
      const ticketCount = getInputValue(ticket);
-   
+       var count =0;
       let ticketNewCount = ticketCount;
       if(isIncrease == true){
          ticketNewCount = ticketCount+1;
@@ -118,11 +120,12 @@
       if(isIncrease == false && ticketCount>0){
          ticketNewCount = ticketCount-1;
       }
-   
+    
       document.getElementById(ticket + '-count').value = ticketNewCount;
       calculateTotal();
        }
 
+    //    total calculation
       function calculateTotal(){
          const firstclassCount = getInputValue('firstclass');
          const economyclassCount =  getInputValue('economyclass');
@@ -142,8 +145,16 @@
          const ticketCount = parseInt(ticketInput.value);
          return ticketCount;
       }
+
+    //   Thanks message part 
        function greeting(){
-          window.prompt('You have to buy ticket first.');
+           
+          window.alert('thanks for staying with us');
+          document.getElementById('firstclass-count').value= 0;
+          document.getElementById('economyclass-count').value= 0;
+          document.getElementById('total-price').innerText= 0;
+          document.getElementById('tax-amount').innerText= 0;
+          document.getElementById('grand-total').innerText= 0;
       }
     </script>
 
